@@ -31,6 +31,13 @@ public class PlayerCharacterMovement : MonoBehaviour
 
     public bool IsSprint => _isSprint;
 
+    public bool Enabled {get; private set;} = true;
+
+    public void SetEnabled(bool isEnabled)
+    {
+        Enabled = isEnabled;
+    }
+
     public void SetMoveDirection(Vector2 inputDirection)
     {
         _movementDirection = new Vector3(inputDirection.x, 0, inputDirection.y);
@@ -45,10 +52,14 @@ public class PlayerCharacterMovement : MonoBehaviour
 
     public void Move()
     {
-        CaculateVelocityY();
-        CalculateVelocityXZ();
-        Vector3 velocity =  new Vector3(_velocityXZ.x,_velocityY,_velocityXZ.z);
-        _characterController.Move(velocity * Time.deltaTime);
+        if (Enabled == true)
+        {
+            CaculateVelocityY();
+            CalculateVelocityXZ();
+            Vector3 velocity =  new Vector3(_velocityXZ.x,_velocityY,_velocityXZ.z);
+            _characterController.Move(velocity * Time.deltaTime);
+        }
+        
     }
 
     private void Awake()

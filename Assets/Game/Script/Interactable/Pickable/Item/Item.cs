@@ -11,12 +11,12 @@ public class Item : MonoBehaviour, Iinteractable, IPickable
 
     [ContextMenu("intercet item")]
 
-    public void Interact(PlayerCharacher character)
+    public void Interact(PlayerCharacter character)
     {
         Pickup(character);
     }
 
-    public void Pickup(PlayerCharacher character)
+    public virtual void Pickup(PlayerCharacter character)
     {
         ItemData newData = new ItemData(_data.ID, _data.Name);
         character.Inventory.AddItems(newData);
