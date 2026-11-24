@@ -1,7 +1,7 @@
 using System.Xml.Serialization;
 using UnityEngine;
 
-public class PlayerC : MonoBehaviour
+public class PlayerCharacherStamina : MonoBehaviour
 {
 
     [SerializeField]
